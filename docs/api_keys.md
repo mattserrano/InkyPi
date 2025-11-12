@@ -81,4 +81,20 @@ Required for the GitHub Plugin
 - Store your api key in the .env file with the key `GITHUB_SECRET`
     ```
     GITHUB_SECRET=your-key
+- Save your access key in `/.env` file as `UNSPLASH_ACCESS_KEY=`
+
+## Immich
+
+Required for the Immich Plugin
+
+- Login to your Immich server with admin credentials
+- Go to the settings page and create an API key with permissions:
+    - asset:
+      - asset.read
+      - asset.download
+    - album:
+        - album.read
+- Store your api key in the .env file with the key IMMICH_SECRET
+    ```
+    IMMICH_SECRET=your-key
     ```
