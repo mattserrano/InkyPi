@@ -94,3 +94,13 @@ Required for the Image Album plugin for the Immich Provider
     ```
     IMMICH_KEY=your-key
     ```
+
+## Subsonic Credentials
+
+Required for the Now Playing plugin
+
+- Store your Subsonic username and password the .env file with the keys `SUBSONIC_USER` and `SUBSONIC_PASS`
+    ```
+    SUBSONIC_USER=your-username
+    SUBSONIC_PASS=your-password
+    ```

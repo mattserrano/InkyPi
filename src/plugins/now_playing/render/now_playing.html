@@ -1,0 +1,18 @@
+{% extends "plugin.html" %}
+
+{% block content %}
+
+<div class="now-playing-container" style="--font-scale: {{ font_scale }};">
+    <div id="album-art-container">
+        {% if cover_art_url %}
+        <img id="album-art" src="{{ cover_art_url }}" alt="Album cover" />
+        {% endif %}
+    </div>
+    <div id="entry-metadata-container">
+        <h1 class="title">{{ title }}</h1>
+        <h2 class="artist">{{ artist }}</h2>
+        <h2 class="album">{{ album }}</h2>
+    </div>
+</div>
+{% endblock %}
+
