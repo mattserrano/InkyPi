@@ -48,7 +48,7 @@ class NowPlaying(BasePlugin):
         url = f"{subsonic_url}/rest/getCoverArt"
         params = self.subsonic_request_params(username, password)
         params["id"] = cover_id
-        params["size"] = dimensions[0] / 2  # display width
+        params["size"] = dimensions[0]  # display width
         req = requests.Request('GET', url, params=params)
         cover_art_url = req.prepare().url
 
@@ -92,6 +92,8 @@ class NowPlaying(BasePlugin):
             "artist": now_playing.get("artist") if now_playing else "",
             "album": now_playing.get("album") if now_playing else "",
             "cover_art_url": cover_art,
+            "dimensions": dimensions,
+            "display_id3_metadata": settings.get("display-id3-metadata"),
             "font_scale": FONT_SIZES.get(settings.get('fontSize', 'normal'), 1),
             "plugin_settings": settings
         }

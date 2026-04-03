@@ -9,9 +9,11 @@
         {% endif %}
     </div>
     <div id="entry-metadata-container">
+        {% if display_id3_metadata %}
         <h1 class="title">{{ title }}</h1>
         <h2 class="artist">{{ artist }}</h2>
         <h2 class="album">{{ album }}</h2>
+        {% endif %}
     </div>
 </div>
 {% endblock %}

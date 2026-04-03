@@ -17,9 +17,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 50%;
   height: 100%;
-  padding: 0.3dvh 0.5dvw;
+  padding: 0.8dvh 0.8dvw;
 }
 
 .entry-metadata-container {
@@ -27,6 +26,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 50%;
-  padding: 20px;
+  min-width: 40%;
+  padding: 0.3dvh 0.5dvw;
 }
