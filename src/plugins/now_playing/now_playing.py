@@ -13,7 +13,12 @@ FONT_SIZES = {
     "x-large": 1.3
 }
 
-class NowPlaying(BasePlugin):  
+class NowPlaying(BasePlugin):
+    def generate_settings_template(self):
+        template_params = super().generate_settings_template()
+        template_params['style_settings'] = True
+        return template_params
+
     def subsonic_request_params(self, username, password):
         salt = hashlib.md5().hexdigest()[:6]
         return {

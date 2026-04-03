@@ -27,5 +27,14 @@
   justify-content: center;
   align-items: center;
   min-width: 40%;
-  padding: 0.3dvh 0.5dvw;
+  gap: 1dvh;
+  font-family: "Jost";
+  container-type: size;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 4rem;
+  max-width: 100%;
+  font-size: min(10cqh, 8cqi);
 }
