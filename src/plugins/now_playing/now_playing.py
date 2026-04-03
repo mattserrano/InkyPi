@@ -18,8 +18,8 @@ class NowPlaying(BasePlugin):
         template_params = super().generate_settings_template()
         template_params['api_key'] = {
             "required": True,
-            "service": "OpenAI",
-            "expected_key": "OPEN_AI_SECRET"
+            "service": "Subsonic",
+            "expected_key": "SUBSONIC_USER"
         }
         template_params['style_settings'] = True
         return template_params
@@ -47,7 +47,7 @@ class NowPlaying(BasePlugin):
         logger.info(f"Subsonic now playing response: {data}")
         assert data.get("status") == "ok", data.get("error", "Subsonic API returned an unknown error")
         
-        entries = data.get("nowPlaying", {}).get("entry")
+        entries = data.get("nowPlaying").get("entry", {})
         now_playing_gen = (entry for entry in entries)
         
         now_playing = next(now_playing_gen, None)
@@ -90,18 +90,19 @@ class NowPlaying(BasePlugin):
             now_playing = None
 
         try:
+            cover_art_url = None
             if now_playing and "coverArt" in now_playing:
                 cover_art_id = now_playing["coverArt"]
-                cover_art = self.parse_cover_art_url(subsonic_url, subsonic_user, subsonic_pass, cover_art_id, dimensions)
+                cover_art_url = self.parse_cover_art_url(subsonic_url, subsonic_user, subsonic_pass, cover_art_id, dimensions)
         except Exception as e:
             logger.error(f"Error fetching cover art: {e}")
-            cover_art = None
+            cover_art_url = None
 
         template_params = {
             "title": now_playing.get("title") if now_playing else "No music playing",
             "artist": now_playing.get("artist") if now_playing else "",
             "album": now_playing.get("album") if now_playing else "",
-            "cover_art_url": cover_art,
+            "cover_art_url": cover_art_url,
             "dimensions": dimensions,
             "display_id3_metadata": settings.get("display-id3-metadata"),
             "font_scale": FONT_SIZES.get(settings.get('fontSize', 'normal'), 1),
