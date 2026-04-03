@@ -8,13 +8,14 @@
         <img id="album-art" src="{{ cover_art_url }}" alt="Album cover" />
         {% endif %}
     </div>
+    {% if display_id3_metadata %}
     <div id="entry-metadata-container">
-        {% if display_id3_metadata %}
+        
         <h1 class="title">{{ title }}</h1>
         <h2>{{ artist }}</h2>
         <h2>{{ album }}</h2>
-        {% endif %}
     </div>
+    {% endif %}
 </div>
 {% endblock %}
 
