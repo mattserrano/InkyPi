@@ -16,6 +16,11 @@ FONT_SIZES = {
 class NowPlaying(BasePlugin):
     def generate_settings_template(self):
         template_params = super().generate_settings_template()
+        template_params['api_key'] = {
+            "required": True,
+            "service": "OpenAI",
+            "expected_key": "OPEN_AI_SECRET"
+        }
         template_params['style_settings'] = True
         return template_params
 
